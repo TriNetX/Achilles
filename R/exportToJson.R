@@ -677,9 +677,9 @@ generateDrugTreemap <- function(conn, dbms,cdmDatabaseSchema, resultsDatabaseSch
 
 generateConditionTreemap <- function(conn, dbms, cdmDatabaseSchema, resultsDatabaseSchema, outputPath, cdmVersion = "4", vocabDatabaseSchema = cdmDatabaseSchema) {
   writeLines("Generating condition treemap")
+  writeLines("Got here 1")
   progressBar <- txtProgressBar(max=1,style=3)
   progress = 0
-  
   queryConditionTreemap <- loadRenderTranslateSql(sqlFilename = addCdmVersionPath("/condition/sqlConditionTreemap.sql",cdmVersion),
                                                    packageName = "Achilles",
                                                    dbms = dbms,
@@ -687,7 +687,7 @@ generateConditionTreemap <- function(conn, dbms, cdmDatabaseSchema, resultsDatab
                                                    results_database_schema = resultsDatabaseSchema,
                                                    vocab_database_schema = vocabDatabaseSchema
   )  
-  
+  writeLines("Got here 2")
   dataConditionTreemap <- querySql(conn,queryConditionTreemap) 
   
   write(toJSON(dataConditionTreemap,method="C"),paste(outputPath, "/condition_treemap.json", sep=''))

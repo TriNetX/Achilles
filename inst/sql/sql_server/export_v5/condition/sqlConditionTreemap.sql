@@ -91,5 +91,6 @@ from (select cast(stratum_1 as int) stratum_1, count_value from @results_databas
 		 on hlgt_to_soc.soc_concept_id = soc.concept_id
 	) concept_hierarchy on ar1.stratum_1 = concept_hierarchy.concept_id
 	, (select count_value from @results_database_schema.ACHILLES_results where analysis_id = 1) denom
+  WHERE ar1.analysis_id = 400
 
 order by ar1.count_value desc

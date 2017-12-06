@@ -1058,7 +1058,7 @@ from @results_database_schema.achilles_results_derived where measure_id ='ach_18
 
 
 
-with t1 (all_count) as 
+with t1 as 
   (select sum(count_value) as all_count from @results_database_schema.achilles_results where analysis_id = 1820)
 select 
 (select count_value from @results_database_schema.achilles_results where analysis_id = 1821)*100.0/all_count as statistic_value,
